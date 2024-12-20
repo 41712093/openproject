@@ -1,0 +1,16 @@
+services:
+
+	openproject:
+		image: openproject/openproject:15
+		container_name: openproject
+		ports:
+			- "8200:80"
+		restart: unless-stopped
+		enviromment:
+			- OPENPROJECT_SECRET_KEY_BASE=Indra2022#;
+			- OPENPROJECT_HOST__NAME=http://192.168.101.200:8200 #youIP
+			- OPENPROJECT_HTTPS=false
+			- OPENPROJECT_DEFAULT__LANGUAGE=yes
+		volumes:
+			- ./pgdata:/var/openproject/pgdata
+			- ./assets:/var/openproject/assets
